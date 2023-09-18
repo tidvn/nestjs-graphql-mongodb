@@ -2,39 +2,116 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Blog {
+type Contact {
+  """ContactId"""
   _id: String!
 
-  """Blog Description"""
-  description: String!
+  """Is Contacted"""
+  isContacted: Boolean!
 
-  """Blog Title"""
-  title: String!
+  """Timestamp"""
+  timestamp: DateTime!
+
+  """User 1"""
+  user1: String!
+
+  """User 2"""
+  user2: String!
 }
 
-input CreateBlogInput {
-  """Blog Description"""
-  description: String!
+input CreateContactInput {
+  """User 1"""
+  user1: String!
 
-  """Blog Title"""
-  title: String!
+  """User 2"""
+  user2: String!
+}
+
+input CreateUserInput {
+  """UserId"""
+  _id: String!
+
+  """Information"""
+  info: [Input_Info!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Info {
+  """Name"""
+  name: String!
+
+  """private"""
+  private: Boolean!
+
+  """Value"""
+  value: String!
+}
+
+input Input_Info {
+  """Name"""
+  name: String!
+
+  """Private"""
+  private: Boolean!
+
+  """Value"""
+  value: String!
 }
 
 type Mutation {
-  createBlog(createBlogInput: CreateBlogInput!): Blog!
-  updateBlog(updateBlogInput: UpdateBlogInput!): Blog!
+  createContact(createContactInput: CreateContactInput!): Contact!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateContact(updateContactInput: UpdateContactInput!): Contact!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+}
+
+type Public_Key {
+  """Blockchain"""
+  blockchain: String!
+
+  """Public Key"""
+  publicKey: String!
 }
 
 type Query {
-  blog(_id: String!): Blog!
+  contact(_id: String!): Contact!
+  user(_id: String!): User!
 }
 
-input UpdateBlogInput {
+input UpdateContactInput {
   _id: String!
 
-  """Blog Description"""
-  description: String
+  """User 1"""
+  user1: String
 
-  """Blog Title"""
-  title: String
+  """User 2"""
+  user2: String
+}
+
+input UpdateUserInput {
+  _id: String!
+
+  """Information"""
+  info: [Input_Info!]
+}
+
+type User {
+  """UserID"""
+  _id: String!
+
+  """Image"""
+  image: String!
+
+  """Custom Data"""
+  info: [Info!]!
+
+  """Public Keys"""
+  publicKeys: [Public_Key!]!
+
+  """UserName"""
+  username: String!
 }

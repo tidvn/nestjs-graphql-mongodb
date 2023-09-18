@@ -1,0 +1,16 @@
+query GetUser {
+  user(_id: "46686392-2c1c-4b61-8856-506960ed3c84") {
+    _id
+    username
+    image
+    info {
+      name
+      private
+      value
+    }
+    publicKeys {
+      blockchain
+      publicKey
+    }
+  }
+}
